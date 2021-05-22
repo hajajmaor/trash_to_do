@@ -10,8 +10,13 @@ import 'models/to_do.dart';
 const kToDoBoxName = "todos";
 
 Future<void> main() async {
-  final path = Directory.current.path;
-  await Hive.initFlutter(path);
+  try {
+    final path = Directory.current.path;
+    await Hive.initFlutter(path);
+  } catch (e) {
+    await Hive.initFlutter();
+  }
+
   Hive.registerAdapter(ToDoAdapter());
   await Hive.openBox<ToDo>(kToDoBoxName);
   runApp(MyApp());

@@ -33,11 +33,14 @@ class MainPage extends StatelessWidget {
                     mainAxisSpacing: 5,
                   ),
                   itemCount: values.length,
-                  itemBuilder: (BuildContext _, int index) => Center(
-                    child: ToDoView(
-                      task: values[index],
-                      key: ValueKey(values[index].key),
-                      index: index,
+                  itemBuilder: (BuildContext _, int index) => Tooltip(
+                    message: "Swipe me to delete",
+                    child: Center(
+                      child: ToDoView(
+                        task: values[index],
+                        key: ValueKey(values[index].key),
+                        index: index,
+                      ),
                     ),
                   ),
                 ),
